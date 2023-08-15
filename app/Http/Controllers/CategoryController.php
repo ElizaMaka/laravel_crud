@@ -26,4 +26,10 @@ class CategoryController extends Controller
 
         return redirect('category')->with('message','Category Added!!');
     }
+
+    public function delete(int $category_id)
+    {
+        Category::findOrFail($category_id)->delete();
+        return redirect('category')->with('message','Category Deleted!!');
+    }
 }

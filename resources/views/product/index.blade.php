@@ -19,8 +19,8 @@
 
                 @endif
                     <div>
-                        <h4>Category Detail
-                            <a href="{{url('category/create')}}" style="float:right;">Add Category</a>
+                        <h4>Products Detail
+                            <a href="{{url('product/create')}}" style="float:right;">Add Product</a>
 
                         </h4>
                     </div><hr><br>
@@ -28,17 +28,28 @@
                         <center>
                         <table >
                             <tr >
-                                <th>Id</th>
+                                <th>Id</th>  
+                                <th>Category</th>                             
                                 <th>Name</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Action</th>
                                 <th>Action</th>
                             </tr>
 
-                            @foreach($categories as $category)
+                            @foreach($products as $product)
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->name}}</td>
+                                <td>{{$product->id}}</td>
+                                <td>{{$product->category->name}}</td>
+                                <td>{{$product->name}}</td>
+                                <td>{{$product->qty}}</td>
+                                <td>{{$product->price}}</td>
                                 <td>
-                                    <a href="{{url('category/'.$category->id.'/delete')}}">Delete</a>
+                                    <a href="{{url('product/'.$product->id.'/edit')}}">Edit</a>
+                                </td>
+
+                                <td>
+                                    <a href="{{url('product/'.$product->id.'/delete')}}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
